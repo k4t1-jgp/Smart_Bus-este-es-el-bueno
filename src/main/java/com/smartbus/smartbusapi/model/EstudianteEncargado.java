@@ -1,6 +1,14 @@
-package com.apibus.smartbus.model;
+package com.smartbus.smartbusapi.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 /**
  * Tabla intermedia que une a un Estudiante con un Encargado (relación muchos a muchos). Aquí se guarda el parentesco, el tipo de encargado y observaciones.
@@ -10,7 +18,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "estudiante_encargado",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"id_estudiante", "id_encargado"}))
+       uniqueConstraints = @UniqueConstraint(columnNames = {"id_estudiante", "id_encargado"}))
 public class EstudianteEncargado {
 
     // Llave primaria. IDENTITY = MySQL la genera sola (AUTO_INCREMENT).

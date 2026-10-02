@@ -1,6 +1,11 @@
-package com.apibus.smartbus.model;
+package com.smartbus.smartbusapi.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 /**
  * Padre, madre o persona responsable de uno o más estudiantes. El parentesco NO va aquí sino en EstudianteEncargado, porque depende de cada estudiante.
