@@ -10,7 +10,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "estudiante_encargado",
-       uniqueConstraints = @UniqueConstraint(columnNames = {"id_estudiante", "id_encargado"}))
+        uniqueConstraints = @UniqueConstraint(columnNames = {"id_estudiante", "id_encargado"}))
 public class EstudianteEncargado {
 
     // Llave primaria. IDENTITY = MySQL la genera sola (AUTO_INCREMENT).
