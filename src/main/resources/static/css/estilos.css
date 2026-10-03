@@ -54,11 +54,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .logo-bus {
   width: 46px; height: 46px; border-radius: 10px; flex: none;
   background:
-    radial-gradient(circle at 32% 82%, var(--marino) 0 4px, transparent 4.5px),
-    radial-gradient(circle at 68% 82%, var(--marino) 0 4px, transparent 4.5px),
-    linear-gradient(var(--marino), var(--marino)) 50% 30% / 64% 42% no-repeat,
-    linear-gradient(var(--amarillo), var(--amarillo)) 50% 26% / 50% 16% no-repeat,
-    var(--amarillo);
+          radial-gradient(circle at 32% 82%, var(--marino) 0 4px, transparent 4.5px),
+          radial-gradient(circle at 68% 82%, var(--marino) 0 4px, transparent 4.5px),
+          linear-gradient(var(--marino), var(--marino)) 50% 30% / 64% 42% no-repeat,
+          linear-gradient(var(--amarillo), var(--amarillo)) 50% 26% / 50% 16% no-repeat,
+          var(--amarillo);
 }
 .logo-bus.pequeno { width: 32px; height: 32px; border-radius: 7px; }
 
@@ -68,8 +68,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
   display: grid; place-items: center;
   padding: 24px;
   background:
-    repeating-linear-gradient(90deg, transparent 0 46px, rgba(242,183,5,.08) 46px 48px),
-    var(--marino);
+          repeating-linear-gradient(90deg, transparent 0 46px, rgba(242,183,5,.08) 46px 48px),
+          var(--marino);
 }
 .login-marco { width: min(400px, 100%); }
 .login-marca { display: flex; gap: 14px; align-items: center; color: var(--blanco); margin-bottom: 22px; }

@@ -113,8 +113,8 @@ $("#btn-menu").addEventListener("click", () => $("#menu-lateral").classList.togg
    ============================================================= */
 function pintarMenu() {
   $("#lista-menu").innerHTML = MENU
-    .filter(opcion => permisos.menu.includes(opcion.clave))
-    .map(opcion => `
+      .filter(opcion => permisos.menu.includes(opcion.clave))
+      .map(opcion => `
       <li><a href="#/${opcion.clave}" data-clave="${opcion.clave}">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${ICONOS[opcion.clave]}</svg>
         ${opcion.texto}
@@ -133,7 +133,7 @@ function navegar() {
   if (!opcion || !permisos.menu.includes(opcion.clave)) opcion = MENU[0];
 
   document.querySelectorAll("#lista-menu a").forEach(a =>
-    a.classList.toggle("activo", a.dataset.clave === opcion.clave));
+      a.classList.toggle("activo", a.dataset.clave === opcion.clave));
   $("#menu-lateral").classList.remove("abierto");
 
   const contenido = $("#contenido");
@@ -157,9 +157,9 @@ async function pantallaCrud(contenedor, clave, opcionMenu) {
 
   // Pestañas (por ejemplo Usuarios | Roles)
   const pestanas = opcionMenu.modulos.length > 1
-    ? `<nav class="pestanas">${opcionMenu.modulos.map(m =>
-        `<a href="#/${opcionMenu.clave}/${m}" class="${m === clave ? "activo" : ""}">${MODULOS[m].titulo}</a>`).join("")}</nav>`
-    : "";
+      ? `<nav class="pestanas">${opcionMenu.modulos.map(m =>
+          `<a href="#/${opcionMenu.clave}/${m}" class="${m === clave ? "activo" : ""}">${MODULOS[m].titulo}</a>`).join("")}</nav>`
+      : "";
 
   contenedor.innerHTML = `
     ${pestanas}
@@ -230,13 +230,13 @@ async function pantallaCrud(contenedor, clave, opcionMenu) {
   function pintarFilas() {
     const texto = estado.filtro.toLowerCase();
     const filas = estado.lista.filter(item => !texto ||
-      modulo.columnas.some(c => String(c.valor(item, estado.ctx)).toLowerCase().includes(texto)));
+        modulo.columnas.some(c => String(c.valor(item, estado.ctx)).toLowerCase().includes(texto)));
 
     const cuerpo = $("#filas", contenedor);
     if (filas.length === 0) {
       cuerpo.innerHTML = `<tr><td class="vacio" colspan="99">${estado.lista.length === 0
-        ? `Todavía no hay registros. ${soloLectura ? "" : `Use “Nuevo ${modulo.singular}” para agregar el primero.`}`
-        : "Ningún registro coincide con la búsqueda."}</td></tr>`;
+          ? `Todavía no hay registros. ${soloLectura ? "" : `Use “Nuevo ${modulo.singular}” para agregar el primero.`}`
+          : "Ningún registro coincide con la búsqueda."}</td></tr>`;
     } else {
       cuerpo.innerHTML = filas.map(item => `
         <tr>
@@ -291,7 +291,7 @@ async function pantallaCrud(contenedor, clave, opcionMenu) {
   async function abrirFormulario(item) {
     editando = item || null;
     $("#titulo-form", contenedor).textContent = item
-      ? `Editar ${modulo.singular}` : `Registrar ${modulo.singular}`;
+        ? `Editar ${modulo.singular}` : `Registrar ${modulo.singular}`;
     await construirCampos($("#campos", contenedor), modulo.campos, item);
     tarjetaForm.hidden = false;
     tarjetaForm.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -388,7 +388,7 @@ async function construirCampos(contenedor, campos, item) {
       hijo.innerHTML = `<option value="">Cargando...</option>`;
       const lista = await intentar(() => c.cargarCon(padre.value)) || [];
       hijo.innerHTML = `<option value="">${lista.length ? "Seleccione..." : "La ruta no tiene paradas"}</option>`
-        + lista.map(o => `<option value="${o.valor}">${esc(o.texto)}</option>`).join("");
+          + lista.map(o => `<option value="${o.valor}">${esc(o.texto)}</option>`).join("");
     });
   });
 }
@@ -465,8 +465,8 @@ const Paginas = {
           </div>
           <div class="lista-rutas">
             ${datos.capacidadPorRuta.length === 0
-              ? `<p class="vacio">No hay rutas activas. Cree una ruta, agréguele paradas y actívela.</p>`
-              : datos.capacidadPorRuta.map(Paginas.filaCapacidad).join("")}
+          ? `<p class="vacio">No hay rutas activas. Cree una ruta, agréguele paradas y actívela.</p>`
+          : datos.capacidadPorRuta.map(Paginas.filaCapacidad).join("")}
           </div>
         </section>
 
@@ -558,16 +558,16 @@ const Paginas = {
       await intentar(async () => {
         const estudiantes = await Api.get("/api/estudiantes/buscar?carne=" + encodeURIComponent(carne));
         const asignaciones = await Promise.all(estudiantes.map(est =>
-          Api.get("/api/asignaciones?estudianteId=" + est.id)));
+            Api.get("/api/asignaciones?estudianteId=" + est.id)));
         $("#res-carne").innerHTML = estudiantes.length === 0
-          ? `<p class="ayuda">No hay estudiantes con un carné que contenga “${esc(carne)}”.</p>`
-          : Paginas.tabla(["Carné", "Nombre", "Grado", "Jornada", "Ruta y parada", "Estado"],
-              estudiantes.map((est, i) => {
-                const activas = asignaciones[i].filter(a => a.estado);
-                return [esc(est.carne), esc(est.nombre), esc(est.grado), esc(est.jornada),
-                  activas.length ? activas.map(a => `${esc(a.ruta.nombre)} / ${esc(a.parada.nombre)}`).join("<br>") : "Sin transporte",
-                  insignia(est.estado)];
-              }));
+            ? `<p class="ayuda">No hay estudiantes con un carné que contenga “${esc(carne)}”.</p>`
+            : Paginas.tabla(["Carné", "Nombre", "Grado", "Jornada", "Ruta y parada", "Estado"],
+                estudiantes.map((est, i) => {
+                  const activas = asignaciones[i].filter(a => a.estado);
+                  return [esc(est.carne), esc(est.nombre), esc(est.grado), esc(est.jornada),
+                    activas.length ? activas.map(a => `${esc(a.ruta.nombre)} / ${esc(a.parada.nombre)}`).join("<br>") : "Sin transporte",
+                    insignia(est.estado)];
+                }));
       });
     });
 
@@ -575,9 +575,9 @@ const Paginas = {
       await intentar(async () => {
         const lista = await Api.get(`/api/pagos/pendientes?mes=${mes}&anio=${anio}`);
         $("#res-pendientes").innerHTML = lista.length === 0
-          ? `<p class="ayuda">Nadie tiene pagos pendientes en ${Formato.mes(mes)} ${anio}.</p>`
-          : Paginas.tabla(["Carné", "Estudiante", "Grado", "Jornada"],
-              lista.map(e => [esc(e.carne), esc(e.nombre), esc(e.grado), esc(e.jornada)]))
+            ? `<p class="ayuda">Nadie tiene pagos pendientes en ${Formato.mes(mes)} ${anio}.</p>`
+            : Paginas.tabla(["Carné", "Estudiante", "Grado", "Jornada"],
+                lista.map(e => [esc(e.carne), esc(e.nombre), esc(e.grado), esc(e.jornada)]))
             + `<p class="pie-tabla">${lista.length} estudiantes con transporte no han pagado ${Formato.mes(mes)} ${anio}.</p>`;
       });
     };
@@ -590,9 +590,9 @@ const Paginas = {
     intentar(async () => {
       const vehiculos = await Api.get("/api/vehiculos/disponibles");
       $("#res-vehiculos").innerHTML = vehiculos.length === 0
-        ? `<p class="ayuda">No hay vehículos disponibles.</p>`
-        : Paginas.tabla(["Placa", "Marca", "Modelo", "Año", "Capacidad"],
-            vehiculos.map(v => [esc(v.placa), esc(v.marca), esc(v.modelo), v.anio, v.capacidad]));
+          ? `<p class="ayuda">No hay vehículos disponibles.</p>`
+          : Paginas.tabla(["Placa", "Marca", "Modelo", "Año", "Capacidad"],
+              vehiculos.map(v => [esc(v.placa), esc(v.marca), esc(v.modelo), v.anio, v.capacidad]));
     });
   },
 
@@ -624,8 +624,8 @@ const Paginas = {
             <div class="derecha"><button class="btn btn-borde btn-chico" id="cerrar-paradas">Cerrar</button></div>
           </div>
           ${enRuta.length === 0
-            ? `<p class="ayuda">Esta ruta todavía no tiene paradas. Necesita al menos una para poder activarse.</p>`
-            : `<div class="contenedor-tabla"><table>
+          ? `<p class="ayuda">Esta ruta todavía no tiene paradas. Necesita al menos una para poder activarse.</p>`
+          : `<div class="contenedor-tabla"><table>
                 <thead><tr><th>Orden</th><th>Parada</th><th>Ubicación</th>${soloLectura ? "" : `<th class="centro">Acciones</th>`}</tr></thead>
                 <tbody>${enRuta.map(rp => `
                   <tr>

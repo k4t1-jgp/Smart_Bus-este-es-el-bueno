@@ -67,8 +67,8 @@ const Opciones = {
 /* ---------- Insignias de estado ---------- */
 function insignia(activo, textoSi = "Activo", textoNo = "Inactivo") {
   return activo
-    ? `<span class="insignia si">${textoSi}</span>`
-    : `<span class="insignia no">${textoNo}</span>`;
+      ? `<span class="insignia si">${textoSi}</span>`
+      : `<span class="insignia no">${textoNo}</span>`;
 }
 
 const campoEstado = { nombre: "estado", etiqueta: "Activo", tipo: "estado", soloAlEditar: true };

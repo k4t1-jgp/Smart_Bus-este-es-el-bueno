@@ -8,8 +8,8 @@
    ============================================================= */
 
 const API_BASE = (location.protocol.startsWith("http") && location.port === "8080")
-  ? ""
-  : "http://localhost:8080";
+    ? ""
+    : "http://localhost:8080";
 
 /**
  * Hace una petición a la API y devuelve el JSON de respuesta.
@@ -28,7 +28,7 @@ async function api(metodo, ruta, cuerpo) {
     respuesta = await fetch(API_BASE + ruta, opciones);
   } catch (e) {
     throw new Error("No hay conexión con la API en " + (API_BASE || location.origin)
-      + ". Revise que SmartbusApiApplication esté corriendo y que MySQL esté encendido.");
+        + ". Revise que SmartbusApiApplication esté corriendo y que MySQL esté encendido.");
   }
 
   const texto = await respuesta.text();
@@ -39,7 +39,7 @@ async function api(metodo, ruta, cuerpo) {
 
   if (!respuesta.ok) {
     const mensaje = (datos && datos.mensaje) ? datos.mensaje
-      : "La API respondió con el error " + respuesta.status;
+        : "La API respondió con el error " + respuesta.status;
     throw new Error(mensaje);
   }
   return datos;
@@ -75,6 +75,6 @@ const Formato = {
   // Evita que un texto con < o > rompa el HTML
   seguro(texto) {
     return String(texto ?? "").replace(/[&<>"']/g, c =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 };
