@@ -1,4 +1,4 @@
-package dto.dto;
+package dto;
 
 /**
  * Datos que se envían para iniciar sesión: POST /api/auth/login

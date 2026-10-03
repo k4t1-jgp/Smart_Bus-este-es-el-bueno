@@ -1,4 +1,4 @@
-package dto.dto;
+package dto;
 
 /**
  * Capacidad de una ruta para el panel de indicadores (dashboard):

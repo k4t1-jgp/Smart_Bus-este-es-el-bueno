@@ -1,17 +1,21 @@
-package dto.dto;
+package dto;
+
+import java.time.LocalTime;
 
 /**
- * DTO ("Data Transfer Object") de Parada.
+ * DTO ("Data Transfer Object") de Jornada.
  *
  * Es la "forma" del JSON que llega en un POST o PUT. No es la entidad: aquí las relaciones se
  * reciben solo como el ID del objeto relacionado (por ejemplo "rolId": 1), y el servicio se
  * encarga de buscar el objeto completo en la base de datos.
  */
-public class ParadaDto {
+public class JornadaDto {
 
     private String nombre;
 
-    private String ubicacion;
+    private LocalTime horarioInicio;
+
+    private LocalTime horarioFin;
 
     private Boolean estado;
 
@@ -23,12 +27,20 @@ public class ParadaDto {
         this.nombre = nombre;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public LocalTime getHorarioInicio() {
+        return horarioInicio;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setHorarioInicio(LocalTime horarioInicio) {
+        this.horarioInicio = horarioInicio;
+    }
+
+    public LocalTime getHorarioFin() {
+        return horarioFin;
+    }
+
+    public void setHorarioFin(LocalTime horarioFin) {
+        this.horarioFin = horarioFin;
     }
 
     public Boolean getEstado() {

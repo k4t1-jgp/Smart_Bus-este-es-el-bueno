@@ -1,21 +1,21 @@
-package dto.dto;
-
-import java.time.LocalTime;
+package dto;
 
 /**
- * DTO ("Data Transfer Object") de Jornada.
+ * DTO ("Data Transfer Object") de Encargado.
  *
  * Es la "forma" del JSON que llega en un POST o PUT. No es la entidad: aquí las relaciones se
  * reciben solo como el ID del objeto relacionado (por ejemplo "rolId": 1), y el servicio se
  * encarga de buscar el objeto completo en la base de datos.
  */
-public class JornadaDto {
+public class EncargadoDto {
 
     private String nombre;
 
-    private LocalTime horarioInicio;
+    private String telefono;
 
-    private LocalTime horarioFin;
+    private String correo;
+
+    private String direccion;
 
     private Boolean estado;
 
@@ -27,20 +27,28 @@ public class JornadaDto {
         this.nombre = nombre;
     }
 
-    public LocalTime getHorarioInicio() {
-        return horarioInicio;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setHorarioInicio(LocalTime horarioInicio) {
-        this.horarioInicio = horarioInicio;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public LocalTime getHorarioFin() {
-        return horarioFin;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setHorarioFin(LocalTime horarioFin) {
-        this.horarioFin = horarioFin;
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Boolean getEstado() {
