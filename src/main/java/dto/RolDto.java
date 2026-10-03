@@ -1,21 +1,17 @@
-package dto.dto;
+package dto;
 
 /**
- * DTO ("Data Transfer Object") de Encargado.
+ * DTO ("Data Transfer Object") de Rol.
  *
  * Es la "forma" del JSON que llega en un POST o PUT. No es la entidad: aquí las relaciones se
  * reciben solo como el ID del objeto relacionado (por ejemplo "rolId": 1), y el servicio se
  * encarga de buscar el objeto completo en la base de datos.
  */
-public class EncargadoDto {
+public class RolDto {
 
     private String nombre;
 
-    private String telefono;
-
-    private String correo;
-
-    private String direccion;
+    private String descripcion;
 
     private Boolean estado;
 
@@ -27,28 +23,12 @@ public class EncargadoDto {
         this.nombre = nombre;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Boolean getEstado() {

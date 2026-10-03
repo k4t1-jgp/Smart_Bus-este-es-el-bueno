@@ -1,4 +1,4 @@
-package dto.dto;
+package dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

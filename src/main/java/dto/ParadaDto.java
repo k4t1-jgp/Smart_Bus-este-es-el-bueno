@@ -1,17 +1,17 @@
-package dto.dto;
+package dto;
 
 /**
- * DTO ("Data Transfer Object") de Rol.
+ * DTO ("Data Transfer Object") de Parada.
  *
  * Es la "forma" del JSON que llega en un POST o PUT. No es la entidad: aquí las relaciones se
  * reciben solo como el ID del objeto relacionado (por ejemplo "rolId": 1), y el servicio se
  * encarga de buscar el objeto completo en la base de datos.
  */
-public class RolDto {
+public class ParadaDto {
 
     private String nombre;
 
-    private String descripcion;
+    private String ubicacion;
 
     private Boolean estado;
 
@@ -23,12 +23,12 @@ public class RolDto {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public Boolean getEstado() {

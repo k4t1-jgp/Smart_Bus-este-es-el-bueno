@@ -1,4 +1,4 @@
-package dto.dto;
+package dto;
 
 /**
  * Lo que la API devuelve cuando se consulta un usuario.

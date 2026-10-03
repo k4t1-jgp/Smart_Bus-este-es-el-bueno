@@ -1,4 +1,4 @@
-package dto.dto;
+package dto;
 
 /**
  * DTO ("Data Transfer Object") de Usuario.
